@@ -14,4 +14,7 @@ void main(List<String> arguments) {
   final element = stack.pop();
   print('Popped: $element');
   print(stack);
+
+  // 2.
+  stack_solution.printListInReverse<String>(["A", "B", "C", "D", "E", "F"]);
 }
