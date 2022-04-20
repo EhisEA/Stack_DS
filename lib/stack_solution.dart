@@ -18,6 +18,7 @@ printListInReverse<T>(List<T> list) {
 
 balance(String test) {
   Stack<String> stack = Stack<String>();
+  Stack<String> stack2 = Stack<String>();
 
   List st = test.trim().split("");
   for (String i in st) {
@@ -25,24 +26,35 @@ balance(String test) {
   }
 
   bool balance = true;
-  String temp = "";
-  int i = 0;
-  a:
+  // String temp = "";
+  // int i = 0;
+  // a:
   while (stack.isNotEmpty) {
-    print(i++);
-    if (temp.isEmpty) {
-      temp = stack.pop();
+    // if (stack2.isEmpty) {
+    //   stack2.push(stack.pop());
+    //   continue;
+    // }
+    if (stack.peek == ")") {
+      stack2.push(stack.pop());
       continue;
     } else {
-      if (stack.pop() == "(" && temp == ")") {
-        temp = "";
-        continue;
-      } else {
-        balance = false;
-        break a;
-      }
+      stack.pop();
+      stack2.pop();
     }
-  }
 
+    // if (temp.isEmpty) {
+    //   temp = stack.pop();
+    //   continue;
+    // } else {
+    //   if (stack.pop() == "(" && temp == ")") {
+    //     temp = "";
+    //     continue;
+    //   } else {
+    //     balance = false;
+    //     break a;
+    //   }
+    // }
+  }
+  balance = stack2.isEmpty && stack.isEmpty;
   print("$test is ${balance ? '' : 'not '}Balance");
 }

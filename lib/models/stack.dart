@@ -16,6 +16,9 @@ class Stack<E> {
   /// return if stack has no item
   bool get isNotEmpty => !isEmpty;
 
+  ///item on top of the stack
+  E get peek => _storage.last;
+
   @override
   String toString() {
     return '--- Top ---\n'
