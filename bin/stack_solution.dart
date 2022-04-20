@@ -17,4 +17,8 @@ void main(List<String> arguments) {
 
   // 2.
   stack_solution.printListInReverse<String>(["A", "B", "C", "D", "E", "F"]);
+
+  // 3.
+
+  stack_solution.balance("t(h(is() )()()(is) (g)) ()ood");
 }

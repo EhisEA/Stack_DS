@@ -15,3 +15,34 @@ printListInReverse<T>(List<T> list) {
     print(stack.pop());
   }
 }
+
+balance(String test) {
+  Stack<String> stack = Stack<String>();
+
+  List st = test.trim().split("");
+  for (String i in st) {
+    if (i == "(" || i == ")") stack.push(i);
+  }
+
+  bool balance = true;
+  String temp = "";
+  int i = 0;
+  a:
+  while (stack.isNotEmpty) {
+    print(i++);
+    if (temp.isEmpty) {
+      temp = stack.pop();
+      continue;
+    } else {
+      if (stack.pop() == "(" && temp == ")") {
+        temp = "";
+        continue;
+      } else {
+        balance = false;
+        break a;
+      }
+    }
+  }
+
+  print("$test is ${balance ? '' : 'not '}Balance");
+}
