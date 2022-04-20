@@ -19,6 +19,9 @@ void main(List<String> arguments) {
   stack_solution.printListInReverse<String>(["A", "B", "C", "D", "E", "F"]);
 
   // 3.
-
-  stack_solution.balance("t(h(is() )()()(is) (g)) ()ood");
+  String test = ")(h)()()( )()ood(";
+  //3 a.
+  stack_solution.balance(test);
+  // 3 b.
+  print(stack_solution.checkParentheses(test));
 }

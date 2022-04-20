@@ -16,45 +16,41 @@ printListInReverse<T>(List<T> list) {
   }
 }
 
-balance(String test) {
+balance(String testString) {
   Stack<String> stack = Stack<String>();
-  Stack<String> stack2 = Stack<String>();
-
-  List st = test.trim().split("");
-  for (String i in st) {
-    if (i == "(" || i == ")") stack.push(i);
-  }
-
+  // to keep track of result
   bool balance = true;
-  // String temp = "";
-  // int i = 0;
-  // a:
-  while (stack.isNotEmpty) {
-    // if (stack2.isEmpty) {
-    //   stack2.push(stack.pop());
-    //   continue;
-    // }
-    if (stack.peek == ")") {
-      stack2.push(stack.pop());
-      continue;
-    } else {
-      stack.pop();
-      stack2.pop();
-    }
 
-    // if (temp.isEmpty) {
-    //   temp = stack.pop();
-    //   continue;
-    // } else {
-    //   if (stack.pop() == "(" && temp == ")") {
-    //     temp = "";
-    //     continue;
-    //   } else {
-    //     balance = false;
-    //     break a;
-    //   }
-    // }
+  for (final i in testString.trim().split("")) {
+    if (i == "(") {
+      stack.push(i);
+    } else if (i == ")") {
+      if (stack.isEmpty) {
+        balance = false;
+        break;
+      } else {
+        stack.pop();
+      }
+    }
   }
-  balance = stack2.isEmpty && stack.isEmpty;
-  print("$test is ${balance ? '' : 'not '}Balance");
+
+  print("$testString is ${balance ? '' : 'not '}Balance");
+}
+
+bool checkParentheses(String text) {
+  var stack = Stack<int>();
+  final open = '('.codeUnitAt(0);
+  final close = ')'.codeUnitAt(0);
+  for (int codeUnit in text.codeUnits) {
+    if (codeUnit == open) {
+      stack.push(codeUnit);
+    } else if (codeUnit == close) {
+      if (stack.isEmpty) {
+        return false;
+      } else {
+        stack.pop();
+      }
+    }
+  }
+  return stack.isEmpty;
 }
